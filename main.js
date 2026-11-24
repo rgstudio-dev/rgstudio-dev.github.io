@@ -50,14 +50,28 @@ document.addEventListener('DOMContentLoaded', () => {
             "games.solitaire.desc": "클래식 솔리테어의 완벽한 이식. 프리미엄 애니메이션과 편안한 디자인.",
             "games.flash_dodge.desc": "극한의 반응속도를 시험하는 닷지 게임. 레트로 감성의 극한.",
             "about.desc1": "RETRO GAMES STUDIO는 80-90년대 아케이드 게임의 순수한 즐거움을 현대적인 감각으로 재현합니다.",
-            "about.desc2": "우리는 단순한 복원을 넘어, 최적화된 사용자 경험과 고품질 그래픽을 통해 레트로 게임의 새로운 기준을 제시합니다."
+            "about.desc2": "우리는 단순한 복원을 넘어, 최적화된 사용자 경험과 고품질 그래픽을 통해 레트로 게임의 새로운 기준을 제시합니다.",
+            "contact.title": "CONTACT US",
+            "contact.subtitle": "문의나 협업 제안은 언제나 환영합니다.",
+            "contact.name": "이름 / 소속",
+            "contact.email": "이메일 주소",
+            "contact.subject": "제목",
+            "contact.message": "메시지",
+            "contact.send": "메시지 보내기"
         },
         en: {
             "hero.subtitle": "Reinterpreting the joy of the past with modern technology.",
             "games.solitaire.desc": "A perfect port of Classic Solitaire. Premium animations and comfortable design.",
             "games.flash_dodge.desc": "A dodge game testing extreme reaction speeds. The peak of retro vibes.",
             "about.desc1": "RETRO GAMES STUDIO recreates the pure joy of 80s-90s arcade games with a modern touch.",
-            "about.desc2": "Beyond simple restoration, we set a new standard for retro games through optimized UX and high-quality graphics."
+            "about.desc2": "Beyond simple restoration, we set a new standard for retro games through optimized UX and high-quality graphics.",
+            "contact.title": "CONTACT US",
+            "contact.subtitle": "Inquiries and collaboration proposals are always welcome.",
+            "contact.name": "NAME",
+            "contact.email": "EMAIL",
+            "contact.subject": "SUBJECT",
+            "contact.message": "MESSAGE",
+            "contact.send": "SEND MESSAGE"
         }
     };
 
@@ -104,6 +118,70 @@ document.addEventListener('DOMContentLoaded', () => {
             updateLanguage(lang);
         });
     });
+
+    // Contact Modal Logic
+    const contactLink = document.getElementById('contact-link');
+    const contactModal = document.getElementById('contact-modal');
+    const modalCloseBtn = document.getElementById('modal-close-btn');
+    const contactForm = document.getElementById('contact-form');
+
+    function openModal() {
+        if (!contactModal) return;
+        contactModal.classList.add('active');
+        contactModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        if (!contactModal) return;
+        contactModal.classList.remove('active');
+        contactModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+
+    if (contactLink) {
+        contactLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal();
+        });
+    }
+
+    if (modalCloseBtn) {
+        modalCloseBtn.addEventListener('click', closeModal);
+    }
+
+    if (contactModal) {
+        contactModal.addEventListener('click', (e) => {
+            if (e.target === contactModal) {
+                closeModal();
+            }
+        });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && contactModal && contactModal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('contact-name').value.trim();
+            const email = document.getElementById('contact-email').value.trim();
+            const subject = document.getElementById('contact-subject').value.trim();
+            const message = document.getElementById('contact-message').value.trim();
+
+            const mailSubject = encodeURIComponent(`[RETRO GAMES STUDIO] ${subject} (from ${name})`);
+            const mailBody = encodeURIComponent(`보낸이: ${name}\n이메일: ${email}\n\n[문의 내용]\n${message}`);
+
+            // Open mailto link
+            window.location.href = `mailto:retro.games.studio@hotmail.com?subject=${mailSubject}&body=${mailBody}`;
+
+            contactForm.reset();
+            closeModal();
+        });
+    }
 
     console.log('RETRO GAMES STUDIO Website Initialized');
 });

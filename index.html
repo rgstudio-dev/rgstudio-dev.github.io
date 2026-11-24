@@ -24,7 +24,7 @@
                 <li><a href="#home">HOME</a></li>
                 <li><a href="#games">GAMES</a></li>
                 <li><a href="#about">ABOUT</a></li>
-                <li><a href="mailto:retro.games.studio@hotmail.com">CONTACT</a></li>
+                <li><a href="#" id="contact-link">CONTACT</a></li>
             </ul>
             <div class="lang-switcher">
                 <button class="lang-btn active" data-lang="ko">KO</button>
@@ -108,6 +108,34 @@
     </footer>
 
     <script src="main.js"></script>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="modal-overlay" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close-btn" aria-label="Close modal">&times;</button>
+            <h2 class="modal-title" data-i18n="contact.title">CONTACT US</h2>
+            <p class="modal-subtitle" data-i18n="contact.subtitle">문의나 협업 제안은 언제나 환영합니다.</p>
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="contact-name" data-i18n="contact.name">NAME</label>
+                    <input type="text" id="contact-name" placeholder="Your name or company" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact-email" data-i18n="contact.email">EMAIL</label>
+                    <input type="email" id="contact-email" placeholder="example@domain.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact-subject" data-i18n="contact.subject">SUBJECT</label>
+                    <input type="text" id="contact-subject" placeholder="Title of inquiry" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact-message" data-i18n="contact.message">MESSAGE</label>
+                    <textarea id="contact-message" rows="5" placeholder="Write your message here..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary modal-submit-btn" data-i18n="contact.send">SEND MESSAGE</button>
+            </form>
+        </div>
+    </div>
 </body>
 
 </html>
