@@ -47,10 +47,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const translations = {
         ko: {
             "hero.subtitle": "과거의 즐거움을 현대의 기술로 재해석합니다.",
-            "games.solitaire.desc": "클래식 솔리테어의 완벽한 이식. 프리미엄 애니메이션과 편안한 디자인.",
+            "hero.btn_games": "게임 보기",
+            "hero.btn_about": "스튜디오 소개",
+            "games.title": "출시작 & 프로젝트",
             "games.flash_dodge.desc": "극한의 반응속도를 시험하는 닷지 게임. 레트로 감성의 극한.",
+            "games.play_now": "GOOGLE PLAY에서 플레이 →",
+            "about.title": "THE STUDIO",
             "about.desc1": "RETRO GAMES STUDIO는 80-90년대 아케이드 게임의 순수한 즐거움을 현대적인 감각으로 재현합니다.",
             "about.desc2": "우리는 단순한 복원을 넘어, 최적화된 사용자 경험과 고품질 그래픽을 통해 레트로 게임의 새로운 기준을 제시합니다.",
+            "about.active_projects": "출시 프로젝트",
+            "about.smooth_play": "부드러운 플레이",
             "contact.title": "CONTACT US",
             "contact.subtitle": "문의나 협업 제안은 언제나 환영합니다.",
             "contact.name": "이름 / 소속",
@@ -61,10 +67,16 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         en: {
             "hero.subtitle": "Reinterpreting the joy of the past with modern technology.",
-            "games.solitaire.desc": "A perfect port of Classic Solitaire. Premium animations and comfortable design.",
+            "hero.btn_games": "VIEW GAMES",
+            "hero.btn_about": "LEARN MORE",
+            "games.title": "OUR PROJECTS",
             "games.flash_dodge.desc": "A dodge game testing extreme reaction speeds. The peak of retro vibes.",
+            "games.play_now": "PLAY ON GOOGLE PLAY →",
+            "about.title": "THE STUDIO",
             "about.desc1": "RETRO GAMES STUDIO recreates the pure joy of 80s-90s arcade games with a modern touch.",
             "about.desc2": "Beyond simple restoration, we set a new standard for retro games through optimized UX and high-quality graphics.",
+            "about.active_projects": "ACTIVE PROJECTS",
+            "about.smooth_play": "SMOOTH PLAY",
             "contact.title": "CONTACT US",
             "contact.subtitle": "Inquiries and collaboration proposals are always welcome.",
             "contact.name": "NAME",
@@ -181,6 +193,12 @@ document.addEventListener('DOMContentLoaded', () => {
             contactForm.reset();
             closeModal();
         });
+    }
+
+    // Set current copyright year
+    const yearElement = document.getElementById('current-year');
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
     }
 
     console.log('RETRO GAMES STUDIO Website Initialized');
